@@ -46,6 +46,8 @@ var CoursesViewItems = function(cursor) {
 		});
 	}
 
+		
+
 	// sort
 	if(sortBy) {
 		filtered = _.sortBy(filtered, sortBy);
@@ -216,7 +218,23 @@ Template.CoursesViewTable.helpers({
 
 
 Template.CoursesViewTableItems.rendered = function() {
+	if( this.comments == undefined){
+		Meteor.call('get_remote_lieu', this._id,  this.lieu, function(err, respJson) {
+				if(err) {
+				//	window.alert("Error: " + err.reason);
+					console.log("error occured on receiving data on server. ", err );
+				} else {
+					//console.log("respJson: ", respJson);
+					//window.alert("respJson: "+respJson);
+					//window.alert(respJson.length + ' tweets received.');
+					//ession.set("recentTweets",respJson);
+					//this.data.course.comments = respJson;
+					
 	
+				}
+				
+			});
+		}
 };
 
 Template.CoursesViewTableItems.events({

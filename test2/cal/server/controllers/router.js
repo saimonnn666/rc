@@ -1,3 +1,2 @@
 Router.map(function () {
-
 });

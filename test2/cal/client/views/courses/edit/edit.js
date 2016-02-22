@@ -1,7 +1,17 @@
 var pageSession = new ReactiveDict();
 
 Template.CoursesEdit.rendered = function() {
-	
+
+	if( this.data.course.comments == undefined){
+		Meteor.call('get_remote_lieu', this.data.course._id,  this.data.course.lieu, function(err, respJson) {
+				if(err) {
+					window.alert("Error: " + err.reason);
+					console.log("error occured on receiving data on server. ", err );
+				} else {	
+				}
+				
+			});
+		}
 };
 
 Template.CoursesEdit.events({
