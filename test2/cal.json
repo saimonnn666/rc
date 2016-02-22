@@ -9,14 +9,16 @@
 
 		"collections": [
 			{
-				"name": "course",
+				"name": "my_courses",
 				"fields": [
-					{ "name": "nom_course", "title": "nom de la course", "required": true, "exportable": true },
+					{ "name": "nomCourse", "title": "nom de la course", "required": true, "exportable": true },
+					{ "name": "dateCourse", "title": "Date",  "required": true, "exportable": true },
 					{ "name": "date_course", "title": "Date", "type": "date", "required": true, "exportable": true },
 					{ "name": "type_course", "title": "Type", "default": "run", "exportable": true },
-					{ "name": "lieu", "lieu": "E-mail", "exportable": true },
+					{ "name": "lieu", "title": "Lieu", "exportable": true },
+					{ "name": "dep", "title": "Département", "exportable": true },
 					{ "name": "note", "title": "Note", "type" : "int", "exportable": true },
-					{ "name": "comments", "title": "Note", "input": "textarea", "exportable": true },
+					{ "name": "comments", "title": "Comments", "input": "textarea", "exportable": true },
 					{ "name": "active", "title": "Active", "type": "bool", "input": "checkbox", "display_helper": "booleanToYesNo", "exportable": true }
 				]
 			}
@@ -25,18 +27,18 @@
 		"queries": [
 			{
 				"name": "courses",
-				"collection": "course",
+				"collection": "my_courses",
 				"filter": {}
 			},
 			{
 				"name": "courses_empty",
-				"collection": "course",
+				"collection": "my_courses",
 				"filter": {"_id": null},
 				"find_one": true
 			},
 			{
 				"name": "course",
-				"collection": "course",
+				"collection": "my_courses",
 				"filter": { "_id": ":courseId" },
 				"find_one": true
 			}

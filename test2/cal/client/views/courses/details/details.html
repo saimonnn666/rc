@@ -31,13 +31,23 @@
 				{{infoMessage}}
 			</div>
 			{{/if}}
-			<div class="form-group  field-nom_course">
-				<label for="nom_course" class="col-sm-3 control-label">
+			<div class="form-group  field-nom-course">
+				<label for="nomCourse" class="col-sm-3 control-label">
 					nom de la course
 				</label>
 				<div class="input-div col-sm-9">
 					<p class="form-control-static">
-						{{course.nom_course}}
+						{{course.nomCourse}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-date-course">
+				<label for="dateCourse" class="col-sm-3 control-label">
+					Date
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{course.dateCourse}}
 					</p>
 				</div>
 			</div>
@@ -63,10 +73,21 @@
 			</div>
 			<div class="form-group  field-lieu">
 				<label for="lieu" class="col-sm-3 control-label">
+					Lieu
 				</label>
 				<div class="input-div col-sm-9">
 					<p class="form-control-static">
 						{{course.lieu}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-dep">
+				<label for="dep" class="col-sm-3 control-label">
+					Département
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{course.dep}}
 					</p>
 				</div>
 			</div>
@@ -82,7 +103,7 @@
 			</div>
 			<div class="form-group  field-comments">
 				<label for="comments" class="col-sm-3 control-label">
-					Note
+					Comments
 				</label>
 				<div class="input-div col-sm-9">
 					<p class="form-control-static">

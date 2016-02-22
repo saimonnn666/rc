@@ -87,7 +87,7 @@ Template.CoursesInsertInsertForm.events({
 			function(values) {
 				
 
-				newId = Course.insert(values, function(e) { if(e) errorAction(e); else submitAction(); });
+				newId = MyCourses.insert(values, function(e) { if(e) errorAction(e); else submitAction(); });
 			}
 		);
 

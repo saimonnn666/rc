@@ -31,7 +31,7 @@ var CoursesViewItems = function(cursor) {
 	} else {
 		searchString = searchString.replace(".", "\\.");
 		var regEx = new RegExp(searchString, "i");
-		var searchFields = ["nom_course", "date_course", "type_course", "lieu", "note", "comments", "active"];
+		var searchFields = ["nomCourse", "dateCourse", "date_course", "type_course", "lieu", "dep", "note", "comments", "active"];
 		filtered = _.filter(raw, function(item) {
 			var match = false;
 			_.each(searchFields, function(field) {
@@ -61,7 +61,7 @@ var CoursesViewItems = function(cursor) {
 
 var CoursesViewExport = function(cursor, fileType) {
 	var data = CoursesViewItems(cursor);
-	var exportFields = ["nom_course", "date_course", "type_course", "lieu", "note", "comments", "active"];
+	var exportFields = ["nomCourse", "dateCourse", "date_course", "type_course", "lieu", "dep", "note", "comments", "active"];
 
 	var str = convertArrayOfObjects(data, exportFields, fileType);
 
@@ -238,7 +238,7 @@ Template.CoursesViewTableItems.events({
 		var values = {};
 		values[fieldName] = !this[fieldName];
 
-		Course.update({ _id: this._id }, { $set: values });
+		MyCourses.update({ _id: this._id }, { $set: values });
 
 		return false;
 	},
@@ -255,7 +255,7 @@ Template.CoursesViewTableItems.events({
 					label: "Yes",
 					className: "btn-success",
 					callback: function() {
-						Course.remove({ _id: me._id });
+						MyCourses.remove({ _id: me._id });
 					}
 				},
 				danger: {

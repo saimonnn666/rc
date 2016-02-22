@@ -34,7 +34,7 @@ this.CoursesController = RouteController.extend({
 
 		return {
 			params: this.params || {},
-			courses: Course.find({}, {})
+			courses: MyCourses.find({}, {})
 		};
 		/*DATA_FUNCTION*/
 	},

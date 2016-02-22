@@ -27,12 +27,24 @@
 				{{infoMessage}}
 			</div>
 			{{/if}}
-			<div class="form-group  field-nom_course">
-				<label for="nom_course">
+			<div class="form-group  field-nom-course">
+				<label for="nomCourse">
 					nom de la course
 				</label>
 				<div class="input-div">
-					<input type="text" name="nom_course" value="{{course.nom_course}}" class="form-control" autofocus="autofocus" required="required">
+					<input type="text" name="nomCourse" value="{{course.nomCourse}}" class="form-control" autofocus="autofocus" required="required">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-date-course">
+				<label for="dateCourse">
+					Date
+				</label>
+				<div class="input-div">
+					<input type="text" name="dateCourse" value="{{course.dateCourse}}" class="form-control" required="required">
 					<span id="help-text" class="help-block">
 					</span>
 					<span id="error-text" class="help-block">
@@ -65,9 +77,22 @@
 			</div>
 			<div class="form-group  field-lieu">
 				<label for="lieu">
+					Lieu
 				</label>
 				<div class="input-div">
 					<input type="text" name="lieu" value="{{course.lieu}}" class="form-control">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-dep">
+				<label for="dep">
+					Département
+				</label>
+				<div class="input-div">
+					<input type="text" name="dep" value="{{course.dep}}" class="form-control">
 					<span id="help-text" class="help-block">
 					</span>
 					<span id="error-text" class="help-block">
@@ -88,7 +113,7 @@
 			</div>
 			<div class="form-group  field-comments">
 				<label for="comments">
-					Note
+					Comments
 				</label>
 				<div class="input-div">
 					<textarea class="form-control" name="comments">{{course.comments}}</textarea>

@@ -34,7 +34,7 @@ this.CoursesDetailsController = RouteController.extend({
 
 		return {
 			params: this.params || {},
-			course: Course.findOne({_id:this.params.courseId}, {})
+			course: MyCourses.findOne({_id:this.params.courseId}, {})
 		};
 		/*DATA_FUNCTION*/
 	},

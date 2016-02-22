@@ -87,7 +87,7 @@ Template.CoursesEditEditForm.events({
 			function(values) {
 				
 
-				Course.update({ _id: t.data.course._id }, { $set: values }, function(e) { if(e) errorAction(e); else submitAction(); });
+				MyCourses.update({ _id: t.data.course._id }, { $set: values }, function(e) { if(e) errorAction(e); else submitAction(); });
 			}
 		);
 

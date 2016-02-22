@@ -1,12 +1,12 @@
 Meteor.publish("courses", function() {
-	return Course.find({}, {});
+	return MyCourses.find({}, {});
 });
 
 Meteor.publish("courses_empty", function() {
-	return Course.find({_id:null}, {});
+	return MyCourses.find({_id:null}, {});
 });
 
 Meteor.publish("course", function(courseId) {
-	return Course.find({_id:courseId}, {});
+	return MyCourses.find({_id:courseId}, {});
 });
 

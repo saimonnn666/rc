@@ -34,7 +34,7 @@ this.CoursesInsertController = RouteController.extend({
 
 		return {
 			params: this.params || {},
-			courses_empty: Course.findOne({_id:null}, {})
+			courses_empty: MyCourses.findOne({_id:null}, {})
 		};
 		/*DATA_FUNCTION*/
 	},
