@@ -1,0 +1,168 @@
+{
+	"application": {
+
+		"title": "Example application",
+
+		"theme": "bootswatch-darkly",
+
+		"use_collection2": false,
+
+		"collections": [
+			{
+				"name": "course",
+				"fields": [
+					{ "name": "nom_course", "title": "nom de la course", "required": true, "exportable": true },
+					{ "name": "date_course", "title": "Date", "type": "date", "required": true, "exportable": true },
+					{ "name": "type_course", "title": "Type", "default": "run", "exportable": true },
+					{ "name": "lieu", "lieu": "E-mail", "exportable": true },
+					{ "name": "note", "title": "Note", "type" : "int", "exportable": true },
+					{ "name": "comments", "title": "Note", "input": "textarea", "exportable": true },
+					{ "name": "active", "title": "Active", "type": "bool", "input": "checkbox", "display_helper": "booleanToYesNo", "exportable": true }
+				]
+			}
+		],
+
+		"queries": [
+			{
+				"name": "courses",
+				"collection": "course",
+				"filter": {}
+			},
+			{
+				"name": "courses_empty",
+				"collection": "course",
+				"filter": {"_id": null},
+				"find_one": true
+			},
+			{
+				"name": "course",
+				"collection": "course",
+				"filter": { "_id": ":courseId" },
+				"find_one": true
+			}
+		],
+
+		"free_zone": {
+
+			"components": [
+				{
+					"name": "main_menu",
+					"type": "menu",
+					"items": [
+						{ "title": "Home page", "route": "home" },
+						{ "title": "courses", "route": "courses" }
+					]
+				}
+			],
+
+			"pages": [
+				{
+					"name": "home",
+					"title": "",
+					"components": [
+						{
+							"name": "home_jumbotron",
+							"title": "Example application",
+							"type": "jumbotron",
+							"text": "<b>This <a href=\"https://www.meteor.com\" target=\"_blank\">Meteor</a> application is made with <a href=\"http://www.meteorkitchen.com\" target=\"_blank\">meteor-kitchen</a> without manual coding.</b><br />It demonstrates how to use DataView and Form components to create simple database application with view, search, insert, edit and delete functions.<br />Source code (input file for generator) is <a href=\"https://github.com/perak/kitchen-examples/tree/master/example-dataview\" target=\"_blank\">here</a>.",
+							"button_title": "Continue &raquo;",
+							"button_route": "courses"
+						}
+					]
+				},
+				{
+					"name": "map",
+					"title": "",
+					"components": [
+						{
+							"name": "map",
+							"title": "Example MAP application",
+							"type": "jumbotron",
+							"button_route": "courses"
+						}
+					]
+				},
+				{
+					"name": "courses",
+					"components": [
+						{
+							"name": "view",
+							"type": "data_view",
+							"title": "courses",
+							"text_if_empty": "No courses :(",
+
+							"query_name": "courses",
+							"query_params": [],
+
+							"insert_route": "courses.insert",
+							"edit_route": "courses.edit",
+							"edit_route_params": [
+								{ "name": "courseId", "value": "this._id" }
+							],
+							"details_route": "courses.details",
+							"details_route_params": [
+								{ "name": "courseId", "value": "this._id" }
+							]
+						}
+					],
+					"pages": [
+						{
+							"name": "insert",
+							"components": [
+								{
+									"name": "insert_form",
+									"type": "form",
+									"mode": "insert",
+									"title": "New course",
+
+									"query_name": "courses_empty",
+									"query_params": [],
+
+									"submit_route": "courses",
+									"cancel_route": "courses"
+								}
+							]
+						},
+						{
+							"name": "details",
+							"route_params": ["courseId"],
+							"components": [
+								{
+									"name": "details_form",
+									"type": "form",
+									"mode": "read_only",
+									"title": "Details",
+									"layout": "horizontal",
+
+									"query_name": "course",
+									"query_params": [],
+
+									"close_route": "courses",
+									"back_route": "courses"
+								}
+							]
+						},
+
+						{
+							"name": "edit",
+							"route_params": ["courseId"],
+							"components": [
+								{
+									"name": "edit_form",
+									"type": "form",
+									"mode": "update",
+									"title": "Edit course",
+									"submit_route": "courses",
+									"cancel_route": "courses",
+
+									"query_name": "course",
+									"query_params": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	}
+}
