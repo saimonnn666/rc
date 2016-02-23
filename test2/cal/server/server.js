@@ -21,10 +21,7 @@ Meteor.methods({
 					param = param.substring(0, param.indexOf("("));
 			}
 			console.log("param "+param);
-			var millisecondsToWait = 3000;
-			setTimeout(function() {
-				// Whatever you want to do after the wait
-			}, millisecondsToWait);
+
 			var url = "http://maps.googleapis.com/maps/api/geocode/json?address="+param;
 				//synchronous GET
 				var result = Meteor.http.get(url, {timeout:30000});
@@ -32,11 +29,15 @@ Meteor.methods({
 					var respJson = JSON.parse(result.content);
 					//console.log("response received."+result.content);
 					try {
-						if ( respJson.results[0].geometry.location.lat != undefined) {
+						if ( respJson.results[0].geometry.location.lat != undefined ) {
 							MyCourses.update(id, {
 								$set: {comments: result.content}
 							});
-							// Lists.update(doc._id, {$set: {slug: slug}});
+							console.log("Response issue: ", result.statusCode);
+						}else if ( respJson.status == "ZERO_RESULTS" ) {
+							MyCourses.update(id, {
+								$set: {comments: result.content}
+							});
 							console.log("Response issue: ", result.statusCode);
 						}
 					}catch(Exception ) {

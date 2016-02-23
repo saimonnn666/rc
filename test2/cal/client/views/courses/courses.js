@@ -226,11 +226,18 @@ Template.CoursesViewTableItems.rendered = function() {
 			if ( lieu.results[0].geometry.location.lat != undefined) {
 				unknowLocation = false;
 			}
+			else if ( lieu.status == "ZERO_RESULTS" ) {
+				unknowLocation = false;
+			}
 		}catch(Exception ) {
 
 		}
 	}
-	if( unknowLocation){
+	if( unknowLocation && trim(this.data.lieu).length > 0 ){
+		var millisecondsToWait = 1000;
+		setTimeout(function() {
+			// Whatever you want to do after the wait
+		}, millisecondsToWait);
 		Meteor.call('get_remote_lieu', this.data._id,  this.data.lieu, function(err, respJson) {
 				if(err) {
 				//	window.alert("Error: " + err.reason);
