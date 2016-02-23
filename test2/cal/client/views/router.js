@@ -7,7 +7,7 @@ Router.configure({
 });
 
 var freeRoutes = [
-	"home",
+	//"home",
 	"map",
 	"courses",
 	"courses.insert",
@@ -28,8 +28,8 @@ Router.onBeforeAction(function() {
 
 Router.map(function () {
 
-	this.route("home", {path: "/", controller: "HomeController"});
-	this.route("map", {path: "/map", controller: "MapController"});
+	//this.route("home", {path: "/", controller: "HomeController"});
+	this.route("map", {path: "/", controller: "MapController"});
 	this.route("courses", {path: "/courses", controller: "CoursesController"});
 	this.route("courses.insert", {path: "/courses/insert", controller: "CoursesInsertController"});
 	this.route("courses.details", {path: "/courses/details/:courseId", controller: "CoursesDetailsController"});
