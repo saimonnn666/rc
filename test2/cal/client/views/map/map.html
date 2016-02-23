@@ -15,16 +15,22 @@
 <template name="MapMap">
 	<div class="jumbotron ">
 		<div id="content" class="container">
-			<h1 id="component-title">
+			<!--<h1 id="component-title">
 				Example MAP application
-			</h1>
+			</h1>-->
 			<p id="jumbotron-text">
 			<style type="text/css">
 	 #map {
-    min-height: 350px;
+    min-height: 600px;
     min-width: 100%;
  }
+
+     .leaflet-popup-content {
+         color : black;
+         font : large bold normal cursive black ;
+     }
 </style>
+   {{otherHelperFunction}}
 		<div id='map'></div>
 			</p>
 			<p id="jumbotron-button">
