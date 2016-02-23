@@ -218,8 +218,8 @@ Template.CoursesViewTable.helpers({
 
 
 Template.CoursesViewTableItems.rendered = function() {
-	if( this.comments == undefined){
-		Meteor.call('get_remote_lieu', this._id,  this.lieu, function(err, respJson) {
+	if( this.data.comments == undefined){
+		Meteor.call('get_remote_lieu', this.data._id,  this.data.lieu, function(err, respJson) {
 				if(err) {
 				//	window.alert("Error: " + err.reason);
 					console.log("error occured on receiving data on server. ", err );

@@ -1,5 +1,5 @@
 Template.Map.rendered = function() {
-	
+	Meteor.subscribe("courses");
 };
 
 Template.Map.events({
@@ -12,17 +12,22 @@ Template.Map.helpers({
 
 Template.MapMap.rendered = function() {
 	if (Meteor.isClient) {
-    L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
-    var map = L.map('map').setView([47.36865, 8.539183], 13);
-     L.tileLayer.provider('Thunderforest.Outdoors').addTo(map);
+		L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
+    	var map = L.map('map').setView([47.36865, 8.539183], 10);
+     	L.tileLayer.provider('Thunderforest.Outdoors').addTo(map);
 
-     var popup = L.popup()
-    .setLatLng([51.5, -0.09])
-    .setContent("I am a standalone popup.")
-    .openOn(map);
-    var marker = L.marker([51.5, -0.09]).addTo(map);
-    marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-}
+     	for (var i = MyCourses.length - 1; i >= 0; i--) {
+     		try{
+     		var  pos = eval(MyCourses[i].comments);
+     		var lat = pos.results[0].geometry.location.lat;
+     		var lng = pos.results[0].geometry.location.lng;
+     		var marker = L.marker([lat, lng]).addTo(map);
+     	 	}
+			catch(Exception){
+     	  }
+     }	
+    
+ }
 
 };
 
