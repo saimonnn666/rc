@@ -218,13 +218,25 @@ Template.CoursesViewTable.helpers({
 
 
 Template.CoursesViewTableItems.rendered = function() {
-	if( this.data.comments == undefined){
+	var unknowLocation = this.data.comments == undefined;
+	if(!unknowLocation){
+		unknowLocation = true;
+		var lieu = JSON.parse(this.data.comments);
+		try {
+			if ( lieu.results[0].geometry.location.lat != undefined) {
+				unknowLocation = false;
+			}
+		}catch(Exception ) {
+
+		}
+	}
+	if( unknowLocation){
 		Meteor.call('get_remote_lieu', this.data._id,  this.data.lieu, function(err, respJson) {
 				if(err) {
 				//	window.alert("Error: " + err.reason);
 					console.log("error occured on receiving data on server. ", err );
 				} else {
-					//console.log("respJson: ", respJson);
+					console.log("ok for: ", this.data.lieu);
 					//window.alert("respJson: "+respJson);
 					//window.alert(respJson.length + ' tweets received.');
 					//ession.set("recentTweets",respJson);
